@@ -1,0 +1,76 @@
+.container {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0 0 40px 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.login-form {
+  border: 2px solid coral;
+  border-radius: 10px;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.form-control {
+  border-radius: 8px;
+  border-style: solid;
+  padding: 10px;
+}
+
+.btn {
+  margin: 20px;
+  padding: 10px 40px;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border: 3px solid coral;
+  border-radius: 10px;
+  background-color: coral;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: coral;
+  color: white;
+
+}
+
+
+.link {
+  color: coral;
+  font-style: italic;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
