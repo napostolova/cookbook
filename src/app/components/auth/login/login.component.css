@@ -71,6 +71,21 @@ label {
   cursor: pointer;
 }
 
+.error-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F2DEDE;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin: 30px;
+}
 .error {
   color: red;
+}
+
+.btn-close {
+  position: relative;
+  top: -20px;
+  right: -25px;
 }

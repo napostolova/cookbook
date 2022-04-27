@@ -1,4 +1,8 @@
 <section class="container">
+    <div *ngIf="error" class="error-container">
+        <p class="error">{{error}}</p>
+        <button  (click)="closeMessage()" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
     <form [formGroup]="form" class="login-form" method="post" (ngSubmit)="login()">
       <h1>Login form</h1>
        
@@ -34,7 +38,7 @@
       
       <button type="submit" class="btn" [disabled]="!form.valid">Login</button>
       <div>
-        <p>You don't have an account? <a class="link" routerLink="/register">Create an account</a></p>
+        <p>Don't have an account yet? <a class="link" routerLink="/register">Create an account</a></p>
       </div>
     </form>
   </section>

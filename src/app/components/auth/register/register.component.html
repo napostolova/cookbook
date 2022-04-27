@@ -1,4 +1,8 @@
 <section class="container">
+  <div *ngIf="error" class="error-container">
+    <p class="error">{{error}}</p>
+    <button  (click)="closeMessage()" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+</div>
   <form [formGroup]="form" class="register" method="post" (ngSubmit)="register()">
     <h1>Create account</h1>
     <div class="form-group">

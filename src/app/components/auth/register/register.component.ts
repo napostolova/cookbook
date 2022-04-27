@@ -13,6 +13,8 @@ import { emailValidator, sameValue } from 'src/app/shared/validators';
 export class RegisterComponent implements OnDestroy {
   form: FormGroup
 
+  error: string = '';
+
   removeSubscription = new Subject();
 
   constructor(
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnDestroy {
       username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, emailValidator]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      rePassword: ['', [Validators.required, sameValue (
+      rePassword: ['', [Validators.required, sameValue(
         () => this.form?.get('password'), this.removeSubscription
       )]]
     });
@@ -37,10 +39,10 @@ export class RegisterComponent implements OnDestroy {
     this.userService.register(this.form.value).subscribe({
       next: (user) => {
         localStorage.setItem('user', user.username);
-        this.router.navigate(['/']);
+        this.router.navigate(['/recipes']);
       },
       error: (error) => {
-        console.log(error);
+        this.error = error.error.message;
       }
     })
 
@@ -48,6 +50,10 @@ export class RegisterComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.removeSubscription.next();
     this.removeSubscription.complete();
+  }
+
+  closeMessage(): void {
+    this.error = '';
   }
 
 }

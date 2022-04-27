@@ -10,6 +10,10 @@ const apiUrl = 'http://localhost:4000/user'
 export class UserService {
 
   user: IUser | null | undefined;
+  
+  get isUser(): boolean {
+    return !!this.user;
+  }
 
   constructor(
     private http: HttpClient
@@ -24,5 +28,10 @@ export class UserService {
     return this.http.post<IUser>(`${apiUrl}/login`, data).pipe(
       tap((user) => this.user = user)
     )
+  }
+  logout() {
+    return this.http.post<IUser>(`${apiUrl}/logout`, {}).pipe(
+      tap(() => this.user = null)
+    );
   }
 }

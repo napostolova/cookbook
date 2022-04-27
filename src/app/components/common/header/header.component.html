@@ -1,11 +1,13 @@
 <header class="header">
     <nav class="navigation">
         <li class="nav-item"><a routerLink="/recipes">Recipes</a></li>
-        <ul class="nav-guest">
+        <ul *ngIf="!isLogged" class="nav-guest">
             <li class="nav-item"><a routerLink="/login">Login</a></li>
             <li class="nav-item"><a routerLink="/register">Register</a></li>
         </ul>
-        <ul class="nav-user">
+        <ul *ngIf="isLogged" class="nav-user">
+            <p class="nav-item user">Wecome, {{username}}</p>
+            <li class="nav-item"><a routerLink="/create">Create recipe</a></li>
             <li class="nav-item"><a routerLink="/my-recipes">My recipes</a></li>
             <li class="nav-item"><a href="">Logout</a></li>
         </ul>
