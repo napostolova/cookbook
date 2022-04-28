@@ -1,1 +1,48 @@
-<p>recipe-details works!</p>
+<div *ngIf="!recipe">Loading...</div>
+<section class="container" *ngIf="recipe">
+    <div class="card">
+        <h1 class="card-title">{{recipe.title}}</h1>
+        <div class="card-body">
+            <div class="card-img">
+                <img src={{recipe.imageUrl}} class="card-img-top" alt="...">
+            </div>
+            <div class="text">
+                <div class="card-text">
+                    <p> {{recipe.likes.length}} likes</p>
+                </div>
+                <div class="card-text-type">
+                    <h5>Type: </h5>
+                    <p> {{recipe.type}}</p>
+                </div>
+                <div class="card-text-products">
+                    <h4>Ingredients: </h4>
+                    <p>{{recipe.products}}</p>
+                </div>
+                <div class="card-text-prep">
+                    <h4>Preparation: </h4>
+                    <p>{{recipe.preparation}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        {{userId}}
+        {{recipe.ownerId}}
+        <div *ngIf="userId==recipe.ownerId" class="owner-btns">
+            <button [routerLink]="['/edit/', recipe._id]" class="btn">Edit</button>
+            <button class="btn">Delete</button>
+        </div>
+
+        <div *ngIf="userId!=recipe.ownerId">
+            <div *ngIf="recipe.likes.includes(userId)">
+                <button class="btn" (click)="likeRecipe(recipe._id)">Like</button>
+            </div>
+            <div *ngIf="recipe.likes.includes(userId)">
+                <div>
+                    <small>You have already liked this recipe</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

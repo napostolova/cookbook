@@ -27,7 +27,14 @@ export class RecipeService {
     return this.http.get<IRecipe[]>(`${apiUrl}`);
   }
 
+  getRecipe(id: string){
+    return this.http.get<IRecipe>(`${apiUrl}/${id}`);
+  }
   createRecipe(data: any) {
     return this.http.post<IRecipe>(`${apiUrl}`, data, httpOptions);
+  }
+
+  likeRecipe(id: string) {
+    return this.http.get<IRecipe>(`${apiUrl}/likes/${id}`, httpOptions)
   }
 }

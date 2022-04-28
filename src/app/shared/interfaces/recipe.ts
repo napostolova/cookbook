@@ -6,6 +6,7 @@ export interface IRecipe {
     imageUrl: string;
     type: string;
     likes: string[];
+    ownerId: string;
     created_at: string;
     updatedAt: string;
     __v: number;

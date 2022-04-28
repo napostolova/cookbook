@@ -23,8 +23,9 @@ export class HeaderComponent {
 
   logout(): void {
     this.userService.logout().subscribe(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['/']);
+    
+      console.log('Logout');
+      
     });
   }
 }
