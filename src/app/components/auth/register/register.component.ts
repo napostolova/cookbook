@@ -37,8 +37,10 @@ export class RegisterComponent implements OnDestroy {
       return;
     }
     this.userService.register(this.form.value).subscribe({
-      next: (user) => {
+      next: (user) => {      
         localStorage.setItem('user', user.username);
+        localStorage.setItem('userId', user._id)
+        localStorage.setItem('token', user.accessToken)
         this.router.navigate(['/recipes']);
       },
       error: (error) => {

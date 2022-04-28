@@ -1,1 +1,86 @@
-<p>recipe-create works!</p>
+<div class="container">
+    <div *ngIf="error" class="error-container">
+        <p class="error">{{error}}</p>
+        <button  (click)="closeMessage()" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="new-recipe">
+        <div class="new-header">
+            <h3>New Recipe</h3>
+        </div>
+
+        <form #form="ngForm" (ngSubmit)="createRecipe(form)" class="create-form">
+            <div class="form-group">
+                <label for="recipeTitle" class="form-label">Title</label>
+                <input #titleInput="ngModel" type="text" name="title" class="form-control" id="recipeTitle"
+                    placeholder="Cake" ngModel required minlength="3">
+
+                <ng-container *ngIf="titleInput.touched">
+                    <p *ngIf="titleInput.errors?.required" class="error">
+                        Recipe title is required!
+                    </p>
+                    <p *ngIf="titleInput.errors?.minlength" class="error">
+                        Recipe title must be at least 3 characters long.
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="form-group">
+                <label for="recipeProducts" class="form-label">Ingredients</label>
+                <textarea #productsInput="ngModel" name="products" class="form-control" id="recipeProducts"
+                    placeholder="Flour, sugar, milk..." rows="4" cols="22" ngModel required minlength="10"></textarea>
+                <ng-container *ngIf="productsInput.touched">
+                    <p *ngIf="productsInput.errors?.required" class="error">
+                        The field with your recipe's ingredients is required.
+                    </p>
+                    <p *ngIf="productsInput.errors?.minlength" class="error">
+                        Ingredients must be at least 10 characters long.
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="form-group">
+                <label for="recipePreparation" class="form-label">Preparation</label>
+                <textarea #preparationInput="ngModel" class="form-control" name="preparation" id="recipePreparation"
+                    placeholder="Mixed eggs and sugar...." rows="4" cols="22" ngModel required minlength="10"></textarea>
+                <ng-container *ngIf="preparationInput.touched">
+                    <p *ngIf="preparationInput.errors?.required" class="error">
+                        The field with recipe preparation is required.
+                    </p>
+                    <p *ngIf="preparationInput.errors?.minlength" class="error">
+                        Preparation must be at least 10 characters long.
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="form-group">
+                <label for="recipeImage" class="form-label">Image</label>
+                <input #imageInput="ngModel" type="text" name="imageUrl" id="recipeImage" placeholder="https://"
+                    class="form-control" ngModel required>
+                <ng-container *ngIf="imageInput.touched">
+                    <p *ngIf="imageInput.errors?.required" class="error">
+                        The recipe image is required.
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="form-group">
+                <select #recipeType="ngModel" name="type" id="recipeType" class="form-control" ngModel required>
+                    <option value=""  class="form-control">Choose a recipe type</option>
+                    <option *ngFor="let type of types" [ngValue]="type.name">{{type.value}}</option>
+                    <ng-container *ngIf="recipeType.touched">
+                        <p *ngIf="recipeType.errors?.required" class="error">
+                            The type is required.
+                        </p>
+                    </ng-container>
+                </select>
+            </div>
+
+
+            <div class="new-recipe-buttons">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="button" routerLink="/recipes" class="btn btn-outline-primary">Cancel</button>
+            </div>
+        </form>
+
+    </div>
+</div>

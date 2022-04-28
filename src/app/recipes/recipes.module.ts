@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -15,6 +16,7 @@ import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RecipesRoutingModule
   ]
 })

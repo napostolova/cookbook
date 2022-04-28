@@ -2,7 +2,7 @@ export interface IRecipe {
     _id: string;
     title: string;
     products: string[];
-    description: string;
+    preparation: string;
     imageUrl: string;
     type: string;
     likes: string[];
