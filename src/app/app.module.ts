@@ -11,6 +11,7 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { UserService } from './services/user/user.service';
+import { RecipesModule } from './recipes/recipes.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { UserService } from './services/user/user.service';
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +27,7 @@ import { UserService } from './services/user/user.service';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    RecipesModule
    ],
   providers: [UserService],
   bootstrap: [AppComponent]

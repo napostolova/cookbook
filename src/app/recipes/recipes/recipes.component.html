@@ -1,0 +1,14 @@
+<div *ngIf="!recipes">Loading...</div>
+<section class="container" *ngIf="recipes">
+    <article class="recipe" *ngFor="let recipe of recipes">
+        <div class="card">
+            <a [routerLink]="['/recipes', recipe._id]" class="btn">
+                <img src={{recipe.imageUrl}} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{recipe.title}}</h5>
+                </div>
+            </a>
+        </div>
+
+    </article>
+</section>
