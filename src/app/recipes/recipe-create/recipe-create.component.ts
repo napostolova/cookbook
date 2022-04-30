@@ -17,26 +17,30 @@ export class RecipeCreateComponent {
     { name: 'Salad recipe', value: 'Salad' },
     { name: 'Soup recipe', value: 'Soup' },
   ]
-  
+
   error: string = '';
 
   constructor(
     private recipeService: RecipeService,
     private router: Router
-  ) { }
+   ) { }
 
   createRecipe(form: NgForm): void {
     if (form.invalid) {
+      console.log('form invalid');
+      
       return;
     }
     this.recipeService.createRecipe(form.value).subscribe({
       next: () => {
         console.log(form.value);
-        
+
         this.router.navigate(['/recipes']);
       },
       error: (error) => {
-        this.error= error.error.message
+        if (error.error.message) {
+          this.error = error.error.message
+        }
         console.log(error);
       }
     });

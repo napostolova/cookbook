@@ -26,15 +26,13 @@
         </div>
     </div>
     <div class="buttons">
-        {{userId}}
-        {{recipe.ownerId}}
         <div *ngIf="userId==recipe.ownerId" class="owner-btns">
             <button [routerLink]="['/edit/', recipe._id]" class="btn">Edit</button>
-            <button class="btn">Delete</button>
+            <button class="btn" (click)="deleteRecipe(recipe._id)">Delete</button>
         </div>
 
         <div *ngIf="userId!=recipe.ownerId">
-            <div *ngIf="recipe.likes.includes(userId)">
+            <div *ngIf="!recipe.likes.includes(userId)">
                 <button class="btn" (click)="likeRecipe(recipe._id)">Like</button>
             </div>
             <div *ngIf="recipe.likes.includes(userId)">

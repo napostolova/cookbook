@@ -15,17 +15,20 @@ export class HeaderComponent {
   get username(): string {
     return this.userService.user?.username || '';
   }
-
+  get userId(): string {
+    return this.userService.user?._id || '';
+  }
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
   logout(): void {
-    this.userService.logout().subscribe(() => {
-    
-      console.log('Logout');
-      
+    this.userService.logout().subscribe(() => {   
+      localStorage.removeItem('user');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('token');
+      this.router.navigate(['/']);
     });
   }
 }

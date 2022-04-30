@@ -17,25 +17,25 @@ export class RecipeDetailsComponent implements OnInit {
 
   recipe: IRecipe | undefined;
   userID = localStorage.getItem('userId');
-  
+
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private router: Router
   ) {
-  
-   }
+
+  }
 
   ngOnInit(): void {
     this.fetchRecipe();
-    }
+  }
 
   fetchRecipe(): void {
     const id = this.activatedRoute.snapshot.params.recipeId;
     this.recipeService.getRecipe(id).subscribe({
       next: (recipe) => {
-        this.recipe = recipe;               
+        this.recipe = recipe;
       },
       error: (error) => {
         console.log(error);
@@ -49,10 +49,26 @@ export class RecipeDetailsComponent implements OnInit {
         console.log('like');
         this.router.navigate([`/recipes`]);
       },
-     error: (error) =>{
-       console.log(error);
-       
-     }
+      error: (error) => {
+        console.log(error);
+
+      }
     })
+  }
+  deleteRecipe(id: string): void {
+    const confirmation = confirm('Are you sure you want to delete this recipe?');
+
+    if (confirmation) {
+      this.recipeService.deleteRecipe(id).subscribe({
+        next: () => {
+          console.log('delete');
+          this.router.navigate(['/recipes']);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
+
   }
 }

@@ -66,7 +66,7 @@
             <div class="form-group">
                 <select #recipeType="ngModel" name="type" id="recipeType" class="form-control" ngModel required>
                     <option value=""  class="form-control">Choose a recipe type</option>
-                    <option *ngFor="let type of types" [ngValue]="type.name">{{type.value}}</option>
+                    <option *ngFor="let type of types" [ngValue]="type.value">{{type.value}}</option>
                     <ng-container *ngIf="recipeType.touched">
                         <p *ngIf="recipeType.errors?.required" class="error">
                             The type is required.

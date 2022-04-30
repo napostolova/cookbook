@@ -8,7 +8,7 @@
         <ul *ngIf="isLogged" class="nav-user">
             <p class="nav-item user">Wecome, {{username}}</p>
             <li class="nav-item"><a routerLink="/create">Create recipe</a></li>
-            <li class="nav-item"><a routerLink="/my-recipes">My recipes</a></li>
+            <li class="nav-item"><a  [routerLink]="['/my-recipes', userId]">My recipes</a></li>
             <li class="nav-item"><a href="">Logout</a></li>
         </ul>
     </nav>
